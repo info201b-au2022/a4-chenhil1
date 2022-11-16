@@ -1,6 +1,6 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
+title: "Racism and the US Prison Population"
+author: "Hillary Chen"
 date: '2022-11-01'
 output: html_document
 ---
@@ -34,7 +34,9 @@ print(sum)
 ```
 
 ## Introduction 
-[TODO]
+One of the most glaring examples of racism in America lies within its prison system. One of the main contributors is the historical and systematic prejudices in our social and political realms, which lead to a disproportionate number of people of color being wrongfully arrested or over-policed. The Vera Institute, whose research is referenced in this report, aims to draw attention to this problem and "end the overcriminalization and mass incarceration of people of color, immigrants, and people experiencing poverty". The information gleaned from these populations, in other words the indirect stakeholders, can be used by researchers, data analysts, and political activists to work towards change, making them the direct stakeholders. Using the Vera Institute's data, this report aims to expose patterns of inequality through the questions, "What county has the highest ratio of prisoners of color to white prisoners*?", "What county has the lowest ratio of prisoners of color to white prisoners?" and "What was the average ratio of prisoners of color to white prisoners in King County, WA from 1970 to 2018?". 
+
+*All prisoners included the dataset were in the age range 15 to 64 years old.
 
 ## Data Summary 
 [TODO]

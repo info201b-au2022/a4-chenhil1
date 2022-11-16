@@ -3,6 +3,9 @@ library(tidyverse)
 # The functions might be useful for A4
 source("../source/a4-helpers.R")
 
+data <- read.csv("../../../data/incarceration_trends.csv")
+View(data)
+
 ## Test queries ----
 #----------------------------------------------------------------------------#
 # Simple queries for basic testing
