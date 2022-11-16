@@ -11,37 +11,12 @@ source("../source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
-
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
 
 ## Introduction 
-One of the most glaring examples of racism in America lies within its prison system. One of the main contributors is the historical and systematic prejudices in our social and political realms, which lead to a disproportionate number of people of color being wrongfully arrested or over-policed. The Vera Institute, whose research is referenced in this report, aims to draw attention to this problem and "end the overcriminalization and mass incarceration of people of color, immigrants, and people experiencing poverty". The information gleaned from these populations, in other words the indirect stakeholders, can be used by researchers, data analysts, and political activists to work towards change, making them the direct stakeholders. Using the Vera Institute's data, this report aims to expose patterns of inequality through the questions, "What county has the highest ratio of prisoners of color to white prisoners*?", "What county has the lowest ratio of prisoners of color to white prisoners?" and "What was the average ratio of prisoners of color to white prisoners in King County, WA from 1970 to 2018?". 
+One of the most glaring examples of racism in America lies within its prison system. One of the main contributors is the systematic prejudices in our social and political realms, which lead to a disproportionate number of people of color being wrongfully arrested or over-policed. The Vera Institute, whose research is referenced in this report, aims to draw attention to this problem and "end the overcriminalization and mass incarceration of people of color, immigrants, and people experiencing poverty". The information gleaned from these populations, in other words the indirect stakeholders, can be used by researchers, data analysts, and political activists to work towards change, making them the direct stakeholders. Using the Vera Institute's data, this report aims to expose patterns of inequality through the questions, "What county has the highest ratio of prisoners of color to white prisoners*?", "What county has the lowest ratio of prisoners of color to white prisoners?" and "What was the average ratio of prisoners of color to white prisoners in King County, WA from 1970 to 2018?". 
 
 *All prisoners included the dataset were in the age range 15 to 64 years old.
 
 ## Data Summary 
-[TODO]
-
-[TODO ... other sections ... See Canvas for details]
-
-_All the very best with your work!_
+The highest ratio of prisoners/people of color (POC) to white prisoners is `r summary_data$max` in `r summary_data$max_county`, `r summary_data$max_state`, in `r summary_data$max_year`. Such a high relative ratio points to a continuation of strong historical patterns of inequality targeted at POC in that area and could suggest similarly high rates in the surrounding regions. On the other hand, the lowest ratio of POC to white prisoners is `r summary_data$min` in `r summary_data$min_county`, `r summary_data$min_state`, in `r summary_data$min_year`. A low ratio like the one found here may be attributed to a community more accepting of POC, or possibly just a low population of POC in the area to begin with. In my home county of King County, WA, the average ratio of POC to white prisoners across 49 years (1970-2018) was revealed to be `r summary_data$avg_KC`. Falling well below the highest ratio and a bit above the lowest, King County, WA does not appear to be an area with historically extreme prejudices (at least in the past half-decade), so this could again point to weaker patterns of inequality or a smaller starting population of POC. 
 
