@@ -20,3 +20,18 @@ One of the most glaring examples of racism in America lies within its prison sys
 ## Data Summary 
 The highest ratio of prisoners/people of color (POC) to white prisoners is `r summary_data$max` in `r summary_data$max_county`, `r summary_data$max_state`, in `r summary_data$max_year`. Such a high relative ratio points to a continuation of strong historical patterns of inequality targeted at POC in that area and could suggest similarly high rates in the surrounding regions. On the other hand, the lowest ratio of POC to white prisoners is `r summary_data$min` in `r summary_data$min_county`, `r summary_data$min_state`, in `r summary_data$min_year`. A low ratio like the one found here may be attributed to a community more accepting of POC, or possibly just a low population of POC in the area to begin with. In my home county of King County, WA, the average ratio of POC to white prisoners across 49 years (1970-2018) was revealed to be `r summary_data$avg_KC`. Falling well below the highest ratio and a bit above the lowest, King County, WA does not appear to be an area with historically extreme prejudices (at least in the past half-decade), so this could again point to weaker patterns of inequality or a smaller starting population of POC. 
 
+## Growth of the U.S. Prison Population
+```{r, echo=FALSE,warning=FALSE,echo=FALSE,message=FALSE}
+ plot_jail_pop_for_us()
+```
+<br/>
+This bar chart can be used to answer the question, "How has the total U.S. prison population fluctuated from 1970 to 2018?" Looking at the graph, we can see that the population has more than doubled over the 49-year period, with the smallest population being `r plot_summary_data$min_plot` around `r plot_summary_data$year_min` and the largest population falling at `r plot_summary_data$max_plot` around `r plot_summary_data$year_max`. 
+
+## Growth of Jail Population by State
+```{r, echo=FALSE,warning=FALSE,echo=FALSE,message=FALSE}
+ plot_jail_pop_by_states(c("WA", "OR", "CA", "VA", "NY"))
+```
+<br/>
+This line graph can be used to answer the question, "How has the prison population changed from 1970 to 2018 in various U.S. states?" In this case, we are looking at the states of Washington, Oregon, California, Virginia, and New York. We found that the state with the smallest jail population during this time period was `r state_summary_data$min_state` with a population of `r state_summary_data$min` in the year `r state_summary_data$min_year`. On the other hand, the state with the largest jail population during this time period was `r state_summary_data$max_state` with a population of `r state_summary_data$min` in the year `r state_summary_data$max_year`.
+
+
