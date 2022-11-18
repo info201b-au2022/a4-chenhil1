@@ -8,21 +8,6 @@ source("../source/a4-helpers.R")
 data <- read.csv("../../../data/incarceration_trends.csv")
 View(data)
 
-## Test queries ----
-#----------------------------------------------------------------------------#
-# Simple queries for basic testing
-#----------------------------------------------------------------------------#
-# Return a simple string
-test_query1 <- function() {
-  return ("Hello world")
-}
-
-# Return a vector of numbers
-test_query2 <- function(num=6) {
-  v <- seq(1:num)
-  return(v)
-}
-
 ## Section 2  ---- 
 #----------------------------------------------------------------------------#
 #----------------------------------------------------------------------------#
@@ -215,7 +200,6 @@ plot_jail_pop_by_states <- function(states){
     )
   return(p)
 }
-plot_jail_pop_by_states(c("WA", "OR", "CA", "VA", "NY"))
 
 
 # Find state, year, value of minimum prison population
@@ -262,9 +246,83 @@ state_summary_min_state$max_year <- state_summary_max_year
 ## Section 5  ---- 
 #----------------------------------------------------------------------------#
 # <variable comparison that reveals potential patterns of inequality>
-# Your functions might go here ... <todo:  update comment>
-# See Canvas
 #----------------------------------------------------------------------------#
+
+# Get dataframe of total POC population and proportion POC population imprisoned in WA
+poc_pop_data <- function() {
+  total <- poc %>%
+    mutate(poc_total_pop = rowSums(select(., aapi_pop_15to64, black_pop_15to64, latinx_pop_15to64, native_pop_15to64))) %>%
+    filter(state == "WA") %>%
+    group_by(year) %>%
+    summarise(sum(poc_total_pop)) %>%
+    rename("poc_total" = "sum(poc_total_pop)")
+
+  prop <- poc %>%
+    mutate(poc_total_pop = rowSums(select(., aapi_pop_15to64, black_pop_15to64, latinx_pop_15to64, native_pop_15to64))) %>%
+    mutate(poc_prop = poc_prison_pop / poc_total_pop) %>%
+    replace(is.na(.), 0) %>%
+    filter(state == "WA") %>%
+    group_by(year) %>%
+    summarise(sum(poc_prop)) %>%
+    rename("poc_prop" = "sum(poc_prop)")
+
+  combine <- left_join(total, prop, by = "year")
+  is.na(combine) <- sapply(combine, is.infinite)
+  combine <- combine %>% replace(is.na(.), 0)
+
+  return(combine)
+}
+
+white_pop_data <- function(){
+  white_prop <- poc %>% 
+    mutate(white_prop = white_prison_pop / white_pop_15to64) %>% 
+    replace(is.na(.), 0) %>% 
+    filter(state == "WA") %>% 
+    group_by(year) %>% 
+    summarise(sum(white_prop)) %>% 
+    rename("white_prop" = "sum(white_prop)")
+  
+  white_total <- poc %>% 
+    filter(state == "WA") %>% 
+    group_by(year) %>% 
+    summarise(sum(white_pop_15to64)) %>% 
+    rename("white_pop" = "sum(white_pop_15to64)")
+  
+  combine <- left_join(white_prop, white_total, by = "year")
+  is.na(combine) <- sapply(combine, is.infinite)
+  combine <- combine %>% replace(is.na(.), 0)
+  
+  return(combine)
+}
+
+# Plot and format scatterplot of relationship between total POC population and proportion POC population imprisoned in WA
+plot_poc_data <- function(){
+  p <- ggplot(poc_pop_data(), aes(x = poc_total, y = poc_prop)) +
+    geom_point() + 
+    labs(
+      x = "Total POC Population",
+      y = "Proportion of POC Population Imprisoned",
+      title = "Imprisoned POC Proportion vs. Total POC Population in Washington",
+      caption = "Relationship between POC population size and proportion of POC population imprisoned, using data from 1970-2018."
+    )
+  return(p)
+}
+
+plot_white_data <- function() {
+  p <- ggplot(white_pop_data(), aes(x = white_pop, y = white_prop)) +
+    geom_point() + 
+    scale_x_continuous(
+      breaks = c(0, 1000000, 2000000, 3000000),
+      labels = c("0", "1,000,000", "2,000,000", "3,000,000")
+    ) +
+    labs(
+      x = "Total White Population",
+      y = "Proportion of White Population Imprisoned",
+      title = "Imprisoned White Proportion vs. Total White Population in Washington",
+      caption = "Relationship between White population size and proportion of White population imprisoned, using data from 1970-2018."
+    )
+  return(p)
+}
 
 ## Section 6  ---- 
 #----------------------------------------------------------------------------#
@@ -274,5 +332,3 @@ state_summary_min_state$max_year <- state_summary_max_year
 #----------------------------------------------------------------------------#
 
 ## Load data frame ---- 
-
-

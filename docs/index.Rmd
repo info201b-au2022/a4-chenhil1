@@ -34,4 +34,10 @@ This bar chart can be used to answer the question, "How has the total U.S. priso
 <br/>
 This line graph can be used to answer the question, "How has the prison population changed from 1970 to 2018 in various U.S. states?" In this case, we are looking at the states of Washington, Oregon, California, Virginia, and New York. We found that the state with the smallest jail population during this time period was `r state_summary_data$min_state` with a population of `r state_summary_data$min` in the year `r state_summary_data$min_year`. On the other hand, the state with the largest jail population during this time period was `r state_summary_data$max_state` with a population of `r state_summary_data$min` in the year `r state_summary_data$max_year`.
 
-
+## Imprisonment Rates and Total Prison Populations in WA
+```{r, echo=FALSE,warning=FALSE,echo=FALSE,message=FALSE}
+plot_poc_data()
+plot_white_data()
+```
+<br/> 
+These scatterplots address the question, "Is there a disproportionate amount of the POC population imprisoned in Washington State?" The POC scatterplot appears to show that there **is** a disproportionately high amount, at least in comparison to the White scatterplot. In the POC scatterplot, the majority of the points fall between and even above the range .15-.20, and the lowest point falls just below .10. However, the White scatterplot shows a majority of points falling between .10 and .15, never getting close to .20, and significant amount fall between .05 and .10. Overall, there is a consistently higher proportion of the POC population in prison than the White proportion. 
