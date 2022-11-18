@@ -1,21 +1,20 @@
 ---
-title: "Racism and the US Prison Population"
+title: "Inequalities of the US Prison System"
 author: "Hillary Chen"
 date: '2022-11-01'
 output: html_document
 ---
 
-```{r echo=FALSE, eval=TRUE, message=FALSE}
+```{r echo=FALSE, eval=TRUE, message=FALSE, warning = FALSE}
 source("../source/a4-helpers.R")
 source("../source/analysis.R")
 ```
 
-## Abstract 
+## Abstract
+Across the history of the United States, the federal and state prison systems have given rise to several inequalities in their populations. This report examines several variables such as race and the ratio of POC to white prisoners, the growth of different prison populations over the years, and proportions of female imprisonment by state. In general, it was found that the highest ratios of POC to white prisoners along with the highest proportions of female imprisonment occurred in mostly Southern states, and that there has been a significantly steep increase in prison populations on both a national and state scale.  
 
 ## Introduction 
 One of the most glaring examples of racism in America lies within its prison system. One of the main contributors is the systematic prejudices in our social and political realms, which lead to a disproportionate number of people of color being wrongfully arrested or over-policed. The Vera Institute, whose research is referenced in this report, aims to draw attention to this problem and "end the overcriminalization and mass incarceration of people of color, immigrants, and people experiencing poverty". The information gleaned from these populations, in other words the indirect stakeholders, can be used by researchers, data analysts, and political activists to work towards change, making them the direct stakeholders. Using the Vera Institute's data, this report aims to expose patterns of inequality through the questions, "What county has the highest ratio of prisoners of color to white prisoners*?", "What county has the lowest ratio of prisoners of color to white prisoners?" and "What was the average ratio of prisoners of color to white prisoners in King County, WA from 1970 to 2018?". 
-
-*All prisoners included the dataset were in the age range 15 to 64 years old.
 
 ## Data Summary 
 The highest ratio of prisoners/people of color (POC) to white prisoners is `r summary_data$max` in `r summary_data$max_county`, `r summary_data$max_state`, in `r summary_data$max_year`. Such a high relative ratio points to a continuation of strong historical patterns of inequality targeted at POC in that area and could suggest similarly high rates in the surrounding regions. On the other hand, the lowest ratio of POC to white prisoners is `r summary_data$min` in `r summary_data$min_county`, `r summary_data$min_state`, in `r summary_data$min_year`. A low ratio like the one found here may be attributed to a community more accepting of POC, or possibly just a low population of POC in the area to begin with. In my home county of King County, WA, the average ratio of POC to white prisoners across 49 years (1970-2018) was revealed to be `r summary_data$avg_KC`. Falling well below the highest ratio and a bit above the lowest, King County, WA does not appear to be an area with historically extreme prejudices (at least in the past half-decade), so this could again point to weaker patterns of inequality or a smaller starting population of POC. 
@@ -40,4 +39,11 @@ plot_poc_data()
 plot_white_data()
 ```
 <br/> 
-These scatterplots address the question, "Is there a disproportionate amount of the POC population imprisoned in Washington State?" The POC scatterplot appears to show that there **is** a disproportionately high amount, at least in comparison to the White scatterplot. In the POC scatterplot, the majority of the points fall between and even above the range .15-.20, and the lowest point falls just below .10. However, the White scatterplot shows a majority of points falling between .10 and .15, never getting close to .20, and significant amount fall between .05 and .10. Overall, there is a consistently higher proportion of the POC population in prison than the White proportion. 
+These scatterplots address the question, "Is there a disproportionate amount of the POC population imprisoned in Washington State?" The POC scatterplot appears to show that there __is__ a disproportionately high amount, at least in comparison to the White scatterplot. In the POC scatterplot, the majority of the points fall between and even above the range .15-.20, and the lowest point falls just below .10. However, the White scatterplot shows a majority of points falling between .10 and .15, never getting close to .20, and significant amount fall between .05 and .10. Overall, there is a consistently higher proportion of the POC population in prison than the White proportion.
+
+## Geograpic Distribution of Female Imprisonment Rate Variance
+```{r, echo=FALSE,warning=FALSE,echo=FALSE,message=FALSE}
+plot_map_data()
+```
+<br/>
+This map can be used to answer the question, "How are female imprisonment proportions distributed across the U.S. states?" Looking at it, we can see that the states with the highest proportion of imprisoned females in relation to the total female population are typically located in the southern part of the country, namely Florida, Oklahoma, and Arizona. In comparison, states farther north appear to have consistently lower proportions. 
